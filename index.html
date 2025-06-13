@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketing Lab - Campaign Simulator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Marketing Lab</h1>
+        <p>Virtual Campaign Simulator & ROI Predictor</p>
+    </header>
+
+    <div class="app-container">
+        <nav id="step-navigation">
+            <ul>
+                <li><a href="#" data-step="product-description-section" class="active-nav">1. Product Definition</a></li>
+                <li><a href="#" data-step="targeting-section">2. Target & Competitors</a></li>
+                <li><a href="#" data-step="advertisement-strategy-section">3. Ad Strategy</a></li>
+                <li><a href="#" data-step="monitoring-section">4. Simulation & ROI</a></li>
+            </ul>
+        </nav>
+
+        <main id="step-content">
+            <section id="product-description-section" class="campaign-step active-step">
+                <h2>Step 1: Describe Your Product</h2>
+                <form id="product-description-form">
+                    <div>
+                        <label for="product-name">Product Name:</label>
+                        <input type="text" id="product-name" name="product-name" required>
+                    </div>
+                    <div>
+                        <label for="product-category">Product Category:</label>
+                        <select id="product-category" name="product-category" required>
+                            <option value="" disabled selected>Select a category...</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="product-subcategory">Product Subcategory:</label>
+                        <select id="product-subcategory" name="product-subcategory" required>
+                            <option value="" disabled selected>Select a subcategory...</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="product-details">Product Description:</label>
+                        <textarea id="product-details" name="product-details" rows="5" placeholder="Describe your product, its key features, and unique selling propositions." required></textarea>
+                    </div>
+                     <button type="button" class="nav-button next-step-btn" onclick="navigateToStep('targeting-section')">Next &raquo;</button>
+                </form>
+            </section>
+
+            <section id="targeting-section" class="campaign-step">
+                <h2>Step 2: Define Target Audience & Competitors</h2>
+                <form id="targeting-form">
+                    <div>
+                        <label for="target-location">Target Location(s):</label>
+                        <input type="text" id="target-location" name="target-location" placeholder="e.g., California, USA; Urban areas in India" required>
+                    </div>
+                    <div>
+                        <label for="competitors">Competitors & Their Products:</label>
+                        <textarea id="competitors" name="competitors" rows="5" placeholder="List key competitors and their products (optional, leave blank if none)."></textarea>
+                    </div>
+                    <button type="button" class="nav-button prev-step-btn" onclick="navigateToStep('product-description-section')">&laquo; Previous</button>
+                    <button type="button" class="nav-button next-step-btn" onclick="navigateToStep('advertisement-strategy-section')">Next &raquo;</button>
+                </form>
+            </section>
+
+            <section id="advertisement-strategy-section" class="campaign-step">
+                <h2>Step 3: Plan Advertisement Strategy</h2>
+                <form id="ad-strategy-form">
+                    <fieldset>
+                        <legend>Media Type (Select all that apply):</legend>
+                        <div><input type="checkbox" id="media-print" name="media-type" value="Print"><label for="media-print">Print Advertising (newspapers, magazines, brochures)</label></div>
+                        <div><input type="checkbox" id="media-broadcast" name="media-type" value="Broadcast"><label for="media-broadcast">Broadcast Advertising (TV and radio)</label></div>
+                        <div><input type="checkbox" id="media-outdoor" name="media-type" value="Outdoor"><label for="media-outdoor">Outdoor Advertising (billboards, transit ads, posters)</label></div>
+                        <div><input type="checkbox" id="media-digital" name="media-type" value="Digital"><label for="media-digital">Digital/Online Advertising (social media, search engines, websites)</label></div>
+                        <div><input type="checkbox" id="media-mobile" name="media-type" value="Mobile"><label for="media-mobile">Mobile Advertising (app banners, push notifications, SMS)</label></div>
+                        <div><input type="checkbox" id="media-directmail" name="media-type" value="DirectMail"><label for="media-directmail">Direct Mail Advertising (postcards, catalogs, flyers)</label></div>
+                        <div><input type="checkbox" id="media-guerrilla" name="media-type" value="Guerrilla"><label for="media-guerrilla">Guerrilla Advertising (unconventional, creative ads)</label></div>
+                        <div><input type="checkbox" id="media-productplacement" name="media-type" value="ProductPlacement"><label for="media-productplacement">Product Placement (in movies or TV shows)</label></div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Advertising Approach:</legend>
+                        <div><input type="radio" id="approach-informative" name="ad-approach" value="Informative" checked><label for="approach-informative">Informative (provides facts, new product launches)</label></div>
+                        <div><input type="radio" id="approach-persuasive" name="ad-approach" value="Persuasive"><label for="approach-persuasive">Persuasive (tries to convince, competitive markets)</label></div>
+                        <div><input type="radio" id="approach-reminder" name="ad-approach" value="Reminder"><label for="approach-reminder">Reminder (keeps brand in customers’ minds)</label></div>
+                        <div><input type="radio" id="approach-comparative" name="ad-approach" value="Comparative"><label for="approach-comparative">Comparative (compares with competing products)</label></div>
+                        <div><input type="radio" id="approach-emotive" name="ad-approach" value="Emotive"><label for="approach-emotive">Emotive/Emotional (targets emotions)</label></div>
+                    </fieldset>
+
+                    <fieldset id="payment-model-fieldset">
+                        <legend>Payment Model (primarily for Digital/Mobile Ads):</legend>
+                        <div><input type="radio" id="payment-ppc" name="payment-model" value="PPC" checked><label for="payment-ppc">Pay-Per-Click (PPC)</label></div>
+                        <div><input type="radio" id="payment-cpm" name="payment-model" value="CPM"><label for="payment-cpm">Cost Per Impression (CPM)</label></div>
+                        <div><input type="radio" id="payment-affiliate" name="payment-model" value="Affiliate"><label for="payment-affiliate">Affiliate Advertising</label></div>
+                        <div><input type="radio" id="payment-influencer" name="payment-model" value="Influencer"><label for="payment-influencer">Influencer Marketing</label></div>
+                    </fieldset>
+
+                    <!-- Placeholder for dynamic ad detail inputs -->
+                    <div id="print-details-container" class="dynamic-form-section" style="display: none;">
+                        <fieldset class="dynamic-fieldset">
+                            <legend>Print Advertising Details</legend>
+                            <div><label for="print-publication">Publication Name:</label><input type="text" id="print-publication" name="print-publication" placeholder="e.g., The New York Times"></div>
+                            <div><label for="print-ad-size">Ad Size:</label><input type="text" id="print-ad-size" name="print-ad-size" placeholder="e.g., Full Page, 1/4 Page"></div>
+                            <div><label for="print-frequency">Frequency:</label><input type="text" id="print-frequency" name="print-frequency" placeholder="e.g., Weekly, Monthly"></div>
+                            <div><label for="print-cost">Estimated Cost per Ad (USD):</label><input type="number" id="print-cost" name="print-cost" placeholder="e.g., 2000" min="0"></div>
+                        </fieldset>
+                    </div>
+
+                    <div id="ppc-cpm-details-container" class="dynamic-form-section" style="display: none;">
+                        <fieldset class="dynamic-fieldset">
+                            <legend>PPC/CPM Campaign Details</legend>
+                            <div><label for="digital-keywords">Target Keywords (comma-separated):</label><textarea id="digital-keywords" name="digital-keywords" rows="3" placeholder="e.g., marketing software, ROI calculator"></textarea></div>
+                            <div><label for="digital-budget">Campaign Budget (USD):</label><input type="number" id="digital-budget" name="digital-budget" placeholder="e.g., 1000" min="0"></div>
+                            <div><label for="digital-target-cpc">Target CPC/CPM (USD):</label><input type="number" id="digital-target-cpc" name="digital-target-cpc" placeholder="e.g., 2.50" step="0.01" min="0"></div>
+                        </fieldset>
+                    </div>
+
+                    <div id="influencer-details-container" class="dynamic-form-section" style="display: none;">
+                        <fieldset class="dynamic-fieldset">
+                            <legend>Influencer Marketing Details</legend>
+                            <div><label for="influencer-platform">Platform:</label><select id="influencer-platform" name="influencer-platform"><option value="">Select Platform</option><option value="youtube">YouTube</option><option value="instagram">Instagram</option><option value="tiktok">TikTok</option><option value="twitter">Twitter/X</option><option value="facebook">Facebook</option><option value="linkedin">LinkedIn</option><option value="blog">Blog</option><option value="other">Other</option></select></div>
+                            <div><label for="influencer-niche">Influencer Niche/Category:</label><input type="text" id="influencer-niche" name="influencer-niche" placeholder="e.g., Gaming, Beauty, Tech"></div>
+                            <div><label for="influencer-followers">Desired Follower/Subscriber Count:</label><input type="text" id="influencer-followers" name="influencer-followers" placeholder="e.g., 10k-50k, 1M+"></div>
+                            <div><label for="influencer-cost">Estimated Cost per Post/Campaign (USD):</label><input type="number" id="influencer-cost" name="influencer-cost" placeholder="e.g., 500" min="0"></div>
+                        </fieldset>
+                    </div>
+
+                    <button type="button" class="nav-button prev-step-btn" onclick="navigateToStep('targeting-section')">&laquo; Previous</button>
+                    <button type="button" class="nav-button run-simulation-btn" onclick="runSimulation()">Run Simulation &raquo;</button>
+                </form>
+            </section>
+
+            <section id="monitoring-section" class="campaign-step">
+                <h2>Step 4: Campaign Summary & ROI</h2>
+                <div id="simulation-output"></div>
+
+                <!-- Real-Time Monitoring Dashboard -->
+                <div id="real-time-dashboard" style="display: none;">
+                    <h2><i class="fas fa-tachometer-alt"></i> Real-Time Monitoring</h2>
+                    <div id="live-roi-display" class="summary-card">
+                        <!-- Live ROI will be injected here -->
+                    </div>
+                    <div id="impact-factors-grid">
+                        <!-- Impact factor cards will be injected here -->
+                    </div>
+                </div>
+
+                <p>Click "Run Simulation" on the previous step to see your campaign summary here.</p>
+                <button type="button" class="nav-button prev-step-btn" onclick="navigateToStep('advertisement-strategy-section')">&laquo; Previous</button>
+                <!-- The main action button is now on the Ad Strategy step -->
+            </section>
+
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Marketing Lab. All rights reserved.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,496 @@
+/* Global Resets & Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: #eef1f5; /* Light grey-blue background */
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #2c3e50; /* Darker blue */
+    color: #ecf0f1; /* Light grey text */
+    padding: 1.2rem 0;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    font-size: 2.2rem;
+    font-weight: 500;
+}
+
+header p {
+    font-size: 1rem;
+    color: #bdc3c7; /* Lighter grey for subtitle */
+}
+
+.app-container {
+    display: flex;
+    flex-grow: 1;
+    max-width: 1400px; /* Max width for larger screens */
+    width: 95%;
+    margin: 20px auto;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border-radius: 8px;
+    overflow: hidden; /* Ensures child elements conform to border-radius */
+}
+
+/* Sidebar Navigation */
+#step-navigation {
+    background-color: #34495e; /* Medium dark blue */
+    color: #ecf0f1;
+    padding: 20px;
+    width: 260px; /* Fixed width for sidebar */
+    min-height: 100%; /* Ensure it spans full height if content is short */
+}
+
+#step-navigation ul {
+    list-style: none;
+}
+
+#step-navigation li a {
+    display: block;
+    color: #ecf0f1;
+    text-decoration: none;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 0.95rem;
+}
+
+#step-navigation li a:hover {
+    background-color: #4a6fa5; /* Lighter blue for hover */
+    color: #fff;
+}
+
+#step-navigation li a.active-nav {
+    background-color: #e8491d; /* Accent color for active */
+    color: #fff;
+    font-weight: 500;
+}
+
+/* Main Content Area */
+#step-content {
+    flex-grow: 1;
+    padding: 30px;
+    overflow-y: auto; /* Scroll content if it overflows */
+}
+
+.campaign-step {
+    display: none; /* Hidden by default */
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.campaign-step.active-step {
+    display: block; /* Show active step */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.campaign-step h2 {
+    color: #2c3e50; /* Dark blue heading */
+    border-bottom: 3px solid #e8491d; /* Accent color border */
+    padding-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+/* Form Elements Styling */
+form div:not(.fieldset-row) { /* Avoid double margin for rows of fieldsets */
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500; /* Slightly bolder labels */
+    color: #34495e; /* Darker label color */
+    font-size: 0.9rem;
+}
+
+input[type="text"],
+select,
+textarea,
+input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #bdc3c7; /* Light grey border */
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 0.95rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+select:focus,
+textarea:focus,
+input[type="number"]:focus {
+    border-color: #3498db; /* Blue border on focus */
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+    outline: none;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+fieldset {
+    border: 1px solid #dce4ec; /* Lighter border for fieldsets */
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 6px;
+    background-color: #f8f9fa; /* Very light background for fieldsets */
+}
+
+legend {
+    font-weight: 600; /* Bolder legend */
+    color: #2c3e50;
+    padding: 0 10px;
+    margin-left: 5px;
+    font-size: 1.1rem;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    margin-right: 10px;
+    vertical-align: middle;
+    transform: scale(1.1); /* Slightly larger checkboxes/radios */
+}
+
+fieldset div label {
+    font-weight: normal;
+    display: inline-flex; /* Align items nicely */
+    align-items: center;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+/* Buttons */
+.nav-button,
+.run-simulation-btn {
+    background-color: #e8491d; /* Accent color */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-right: 10px;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.nav-button:hover,
+.run-simulation-btn:hover {
+    background-color: #d73c0c; /* Darker accent on hover */
+    transform: translateY(-1px);
+}
+
+.nav-button:active,
+.run-simulation-btn:active {
+    transform: translateY(1px);
+}
+
+.prev-step-btn {
+    background-color: #7f8c8d; /* Grey for previous button */
+}
+
+.prev-step-btn:hover {
+    background-color: #6c7a7b;
+}
+
+.dynamic-form-section {
+    margin-top: 20px;
+}
+
+/* --- Utility Classes -- */
+.text-success {
+    color: #2ecc71; /* Green for profit/positive ROI */
+    font-weight: 600;
+}
+
+.text-danger {
+    color: #e74c3c; /* Red for loss/negative ROI */
+    font-weight: 600;
+}
+
+/* --- Simulation Output & Summary Cards --- */
+#simulation-output {
+    padding-top: 20px;
+}
+
+#simulation-output h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 25px;
+    font-size: 1.8em;
+    border-bottom: none; /* Override default h2 style */
+}
+
+#simulation-output h2 .fas {
+    margin-right: 10px;
+    color: #e8491d; /* Accent color */
+}
+
+.summary-card {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    overflow: hidden; /* Ensures the header background doesn't bleed out */
+}
+
+.summary-header {
+    display: flex;
+    align-items: center;
+    background-color: #f7f9fc;
+    padding: 15px 20px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.summary-header .fas {
+    font-size: 1.5em;
+    color: #3498db; /* Blue for icons */
+    margin-right: 15px;
+    width: 30px; /* Ensures alignment */
+    text-align: center;
+}
+
+.summary-header h3 {
+    margin: 0;
+    font-size: 1.4em;
+    color: #333;
+}
+
+.summary-content {
+    padding: 20px;
+}
+
+.summary-content p {
+    margin: 0 0 12px 0;
+    line-height: 1.6;
+    color: #555;
+}
+
+.summary-content p:last-child {
+    margin-bottom: 0;
+}
+
+.summary-content strong {
+    color: #333;
+    min-width: 150px; /* Align values */
+    display: inline-block;
+}
+
+.summary-content hr {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin: 15px 0;
+}
+
+.details-section {
+    padding: 15px;
+    background-color: #fdfdfd;
+    border-radius: 5px;
+    margin-top: 15px;
+    border: 1px solid #e9e9e9;
+}
+
+.details-section:not(:last-child) {
+    margin-bottom: 15px;
+}
+
+.details-section h4 {
+    margin: 0 0 10px 0;
+    font-size: 1.1em;
+    color: #0056b3;
+    display: flex;
+    align-items: center;
+}
+
+.details-section h4 .fas {
+    margin-right: 8px;
+    font-size: 1em;
+}
+
+/* --- Real-Time Monitoring Dashboard -- */
+#real-time-dashboard h2 {
+    text-align: center;
+    color: #34495e;
+    margin-bottom: 20px;
+}
+
+#live-roi-display {
+    text-align: center;
+    padding: 20px;
+    background-color: #2c3e50;
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    transition: background-color 0.5s ease;
+}
+
+#live-roi-display .roi-value {
+    font-size: 3em;
+    font-weight: 700;
+    display: block;
+    margin: 10px 0;
+    transition: color 0.5s ease;
+}
+
+#live-roi-display .roi-label {
+    font-size: 1.2em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.8;
+}
+
+#impact-factors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.impact-factor-card {
+    background-color: #fff;
+    border: 1px solid #ecf0f1;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.impact-factor-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.impact-factor-card .factor-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #34495e;
+    margin-bottom: 10px;
+}
+
+.impact-factor-card .factor-value {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #2980b9;
+    transition: color 0.3s ease;
+}
+
+.impact-factor-card .factor-trend {
+    font-size: 1em;
+    margin-left: 8px;
+}
+
+.factor-trend .fa-arrow-up {
+    color: #2ecc71;
+}
+
+.factor-trend .fa-arrow-down {
+    color: #e74c3c;
+}
+
+.factor-trend .fa-minus {
+    color: #95a5a6;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    margin-top: auto; /* Pushes footer to bottom if content is short */
+    font-size: 0.9rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .app-container {
+        flex-direction: column;
+        width: 100%;
+        margin: 0;
+        border-radius: 0;
+    }
+
+    #step-navigation {
+        width: 100%;
+        padding: 10px;
+        min-height: auto;
+    }
+
+    #step-navigation ul {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+    #step-navigation li a {
+        padding: 10px;
+        margin-bottom: 5px;
+        text-align: center;
+    }
+
+    #step-content {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    .campaign-step h2 {
+        font-size: 1.5rem;
+    }
+
+    #step-navigation ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+    input[type="text"],
+    select,
+    textarea {
+        padding: 10px;
+    }
+    .nav-button,
+    button[type="button"] {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+}

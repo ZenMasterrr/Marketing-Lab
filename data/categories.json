@@ -1,0 +1,57 @@
+{
+  "categories": [
+    {
+      "name": "Service",
+      "subcategories": [
+        "Consulting",
+        "Financial Services",
+        "Healthcare Services",
+        "Educational Services",
+        "Legal Services",
+        "Hospitality Services",
+        "Other Services"
+      ]
+    },
+    {
+      "name": "Software",
+      "subcategories": [
+        "SaaS (Software as a Service)",
+        "Mobile App",
+        "Desktop Application",
+        "Enterprise Software",
+        "Developer Tools",
+        "Games",
+        "Other Software"
+      ]
+    },
+    {
+      "name": "Website",
+      "subcategories": [
+        "E-commerce Site",
+        "Blog/Content Site",
+        "Portfolio Site",
+        "Community Forum",
+        "Informational Site",
+        "Web Application Portal",
+        "Other Website"
+      ]
+    },
+    {
+      "name": "Hardware",
+      "subcategories": [
+        "Electronics (e.g., Consumer Electronics, IoT Devices)",
+        "Furniture",
+        "Machinery",
+        "Vehicles",
+        "Wearables",
+        "Other Hardware"
+      ]
+    },
+    {
+      "name": "Other",
+      "subcategories": [
+        "Other Product Type"
+      ]
+    }
+  ]
+}
